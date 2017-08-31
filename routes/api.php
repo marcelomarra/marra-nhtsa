@@ -16,4 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/vehicles/{model_year}/{manufacturer}/{model}', 'VehicleController@search');
+Route::get('/vehicles/{model_year}/{manufacturer}/{model}', 'VehicleController@getSearch');
+Route::post('/vehicles', 'VehicleController@postSearch');

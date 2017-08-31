@@ -14,9 +14,22 @@ class VehicleController extends Controller
      * @param $model
      * @return \Illuminate\Http\JsonResponse
      */
-    public function search($model_year, $manufacturer, $model)
+    public function getSearch($model_year, $manufacturer, $model)
     {
         return $this->performSearch($model_year, $manufacturer, $model);
+    }
+
+    /*
+     * Search for a vehicle
+     *
+     * @param $model_year
+     * @param $manufacturer
+     * @param $model
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postSearch()
+    {
+        return $this->performSearch(request()->json('modelYear', ''), request()->json('manufacturer', ''), request()->json('model', ''));
     }
 
     /**
@@ -28,15 +41,20 @@ class VehicleController extends Controller
     protected function performSearch($model_year, $manufacturer, $model)
     {
         $response = $this->dispatch(new GetSafetyRankings($model_year, $manufacturer, $model));
-        $collection = collect($response['Results']);
-        $transformed = $collection->reduce(function ($lookup, $vehicle) {
-            $transformedVehicle = [];
-            $transformedVehicle['Description'] = $vehicle['VehicleDescription'];
-            $transformedVehicle['VehicleId'] = $vehicle['VehicleId'];
-            $lookup[] = $transformedVehicle;
-            return $lookup;
-        }, []);
-        $response['Results'] = $transformed;
+        if (isset($response['Results'])) {
+            $collection = collect($response['Results']);
+            $transformed = $collection->reduce(function ($lookup, $vehicle) {
+                $transformedVehicle = [];
+                $transformedVehicle['Description'] = $vehicle['VehicleDescription'];
+                $transformedVehicle['VehicleId'] = $vehicle['VehicleId'];
+                $lookup[] = $transformedVehicle;
+                return $lookup;
+            }, []);
+            $response['Results'] = $transformed;
+        } else {
+            unset($response['Message']);
+            $response['Results'] = [];
+        }
         return response()->json($response, 200);
     }
 }

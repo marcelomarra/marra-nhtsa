@@ -9,7 +9,7 @@
       },
       {
         "name": "HOST",
-        "value": "http://marra-nhtsa.herokuapp.com/"
+        "value": "http://marra-nhtsa.herokuapp.com/api"
       }
     ],
     "name": "marra-nhtsa",
@@ -57,7 +57,7 @@
             ],
             "actions": [
               {
-                "name": "List All Questions",
+                "name": "Search",
                 "description": "",
                 "method": "GET",
                 "parameters": [],
@@ -81,7 +81,89 @@
                             "value": "application/json"
                           }
                         ],
-                        "body": "{\n  \"Count\": 0,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"VehicleDescription\": \"2015 Audi A3 4 DR AWD\",\n      \"VehicleId\": 9403,\n      \"CrashRating\": \"Not Rated\"\n    }\n  ]\n}",
+                        "body": "{\n  \"Count\": 0,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"Description\": \"2015 Audi A3 4 DR AWD\",\n      \"VehicleId\": 9403,\n      \"CrashRating\": \"Not Rated\"\n    }\n  ]\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"Count\": {\n      \"type\": \"number\"\n    },\n    \"Message\": {\n      \"type\": \"string\"\n    },\n    \"Results\": {\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"Count\",\n    \"Results\"\n  ]\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Vehicle Search Result"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      },
+      {
+        "name": "Requirement 2",
+        "description": "",
+        "resources": [
+          {
+            "element": "resource",
+            "name": "Vehicle Search",
+            "description": "",
+            "uriTemplate": "/vehicles",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "Search",
+                "description": "",
+                "method": "POST",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"modelYear\": 2015,\n  \"manufacturer\": \"Audi\",\n  \"model\": \"A3\"\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"modelYear\": {\n      \"type\": \"number\"\n    },\n    \"manufacturer\": {\n      \"type\": \"string\"\n    },\n    \"model\": {\n      \"type\": \"string\"\n    }\n  }\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Vehicle Search"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"Count\": 0,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"Description\": \"2015 Audi A3 4 DR AWD\",\n      \"VehicleId\": 9403,\n      \"CrashRating\": \"Not Rated\"\n    }\n  ]\n}",
                         "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"Count\": {\n      \"type\": \"number\"\n    },\n    \"Message\": {\n      \"type\": \"string\"\n    },\n    \"Results\": {\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"Count\",\n    \"Results\"\n  ]\n}",
                         "content": [
                           {
@@ -193,7 +275,7 @@
                     "content": {
                       "key": {
                         "element": "string",
-                        "content": "VehicleDescription"
+                        "content": "Description"
                       },
                       "value": {
                         "element": "string",
@@ -333,7 +415,7 @@
             ],
             "actions": [
               {
-                "name": "List All Questions",
+                "name": "Search",
                 "description": "",
                 "method": "GET",
                 "parameters": [],
@@ -357,7 +439,91 @@
                             "value": "application/json"
                           }
                         ],
-                        "body": "{\n  \"Count\": 0,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"VehicleDescription\": \"2015 Audi A3 4 DR AWD\",\n      \"VehicleId\": 9403,\n      \"CrashRating\": \"Not Rated\"\n    }\n  ]\n}",
+                        "body": "{\n  \"Count\": 0,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"Description\": \"2015 Audi A3 4 DR AWD\",\n      \"VehicleId\": 9403,\n      \"CrashRating\": \"Not Rated\"\n    }\n  ]\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"Count\": {\n      \"type\": \"number\"\n    },\n    \"Message\": {\n      \"type\": \"string\"\n    },\n    \"Results\": {\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"Count\",\n    \"Results\"\n  ]\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Vehicle Search Result"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      },
+      {
+        "element": "category",
+        "attributes": {
+          "name": "Requirement 2"
+        },
+        "content": [
+          {
+            "element": "resource",
+            "name": "Vehicle Search",
+            "description": "",
+            "uriTemplate": "/vehicles",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "Search",
+                "description": "",
+                "method": "POST",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"modelYear\": 2015,\n  \"manufacturer\": \"Audi\",\n  \"model\": \"A3\"\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"modelYear\": {\n      \"type\": \"number\"\n    },\n    \"manufacturer\": {\n      \"type\": \"string\"\n    },\n    \"model\": {\n      \"type\": \"string\"\n    }\n  }\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Vehicle Search"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"Count\": 0,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"Description\": \"2015 Audi A3 4 DR AWD\",\n      \"VehicleId\": 9403,\n      \"CrashRating\": \"Not Rated\"\n    }\n  ]\n}",
                         "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"Count\": {\n      \"type\": \"number\"\n    },\n    \"Message\": {\n      \"type\": \"string\"\n    },\n    \"Results\": {\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"Count\",\n    \"Results\"\n  ]\n}",
                         "content": [
                           {
