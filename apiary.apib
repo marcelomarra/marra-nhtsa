@@ -1,0 +1,39 @@
+FORMAT: 1A
+HOST: http://marra-nhtsa.herokuapp.com/api
+
+# marra-nhtsa
+
+This is a Modus Create PHP API Development Assignment
+
+## Data Structures
+
+### Vehicle Search Result
++ Count: 0 (number, required)
++ Message: Results returned successfully (string)
++ Results (array[Vehicle Rating], required)
+
+### Vehicle Rating
++ Description: 2015 Audi A3 4 DR AWD (string, required)
++ VehicleId: 9403 (number, required)
++ CrashRating: Not Rated (string)
+
+### Vehicle Search
++ modelYear: 2015 (number)
++ manufacturer: Audi (string)
++ model: A3 (string)
+
+# Group Requirement 1
+
+## Vehicle Search [/vehicles/{model_year}/{manufacturer}/{model}]
+
++ Parameters
+
+    + model_year: 2015 (number) - Vehicle's model year
+    + manufacturer: Audi (string) - Vehicles's manufacturer name
+    + model: A3 (string) - Vehicle's model name
+
+### List All Questions [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (Vehicle Search Result)
