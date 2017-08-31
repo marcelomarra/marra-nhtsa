@@ -6,10 +6,9 @@ node:
   - 8.4.0
 git:
   submodules: false
-pre_install:
-  - npm install -g dredd@1.0.1
 install:
     - composer install
+    - npm install -g dredd@1.0.1
 before_script:
   - dredd
 script:
