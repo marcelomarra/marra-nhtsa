@@ -184,6 +184,102 @@
             "content": []
           }
         ]
+      },
+      {
+        "name": "Requirement 3",
+        "description": "",
+        "resources": [
+          {
+            "element": "resource",
+            "name": "Vehicle Search",
+            "description": "",
+            "uriTemplate": "/vehicles/{model_year}/{manufacturer}/{model}?withRating={with_rating}",
+            "model": {},
+            "parameters": [
+              {
+                "name": "with_rating",
+                "description": "Indicates if should return ratings info",
+                "type": "boolean",
+                "required": true,
+                "default": "",
+                "example": "true",
+                "values": []
+              },
+              {
+                "name": "model_year",
+                "description": "Vehicle's model year",
+                "type": "number",
+                "required": true,
+                "default": "",
+                "example": "2015",
+                "values": []
+              },
+              {
+                "name": "manufacturer",
+                "description": "Vehicles's manufacturer name",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "Audi",
+                "values": []
+              },
+              {
+                "name": "model",
+                "description": "Vehicle's model name",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "A3",
+                "values": []
+              }
+            ],
+            "actions": [
+              {
+                "name": "Search",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"Count\": 0,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"Description\": \"2015 Audi A3 4 DR AWD\",\n      \"VehicleId\": 9403,\n      \"CrashRating\": \"Not Rated\"\n    }\n  ]\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"Count\": {\n      \"type\": \"number\"\n    },\n    \"Message\": {\n      \"type\": \"string\"\n    },\n    \"Results\": {\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"Count\",\n    \"Results\"\n  ]\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Vehicle Search Result"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
       }
     ],
     "content": [
@@ -513,6 +609,104 @@
                         ]
                       }
                     ],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"Count\": 0,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"Description\": \"2015 Audi A3 4 DR AWD\",\n      \"VehicleId\": 9403,\n      \"CrashRating\": \"Not Rated\"\n    }\n  ]\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"Count\": {\n      \"type\": \"number\"\n    },\n    \"Message\": {\n      \"type\": \"string\"\n    },\n    \"Results\": {\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"Count\",\n    \"Results\"\n  ]\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Vehicle Search Result"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      },
+      {
+        "element": "category",
+        "attributes": {
+          "name": "Requirement 3"
+        },
+        "content": [
+          {
+            "element": "resource",
+            "name": "Vehicle Search",
+            "description": "",
+            "uriTemplate": "/vehicles/{model_year}/{manufacturer}/{model}?withRating={with_rating}",
+            "model": {},
+            "parameters": [
+              {
+                "name": "with_rating",
+                "description": "Indicates if should return ratings info",
+                "type": "boolean",
+                "required": true,
+                "default": "",
+                "example": "true",
+                "values": []
+              },
+              {
+                "name": "model_year",
+                "description": "Vehicle's model year",
+                "type": "number",
+                "required": true,
+                "default": "",
+                "example": "2015",
+                "values": []
+              },
+              {
+                "name": "manufacturer",
+                "description": "Vehicles's manufacturer name",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "Audi",
+                "values": []
+              },
+              {
+                "name": "model",
+                "description": "Vehicle's model name",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "A3",
+                "values": []
+              }
+            ],
+            "actions": [
+              {
+                "name": "Search",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
                     "responses": [
                       {
                         "name": "200",
