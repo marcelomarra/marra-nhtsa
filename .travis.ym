@@ -1,0 +1,6 @@
+language: php
+install:
+    - composer install
+    - npm install -g dredd
+script:
+    - dredd
