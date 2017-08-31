@@ -49,7 +49,7 @@ class GetSafetyRankings
         $url = env('NHTSA_API_URL') . "modelyear/$this->modelYear/make/$this->make/model/$this->model?format=json";
         $response = $client->request('GET', $url);
         if ($response->getStatusCode() === 200) {
-            return json_decode($response->getBody(), true);
+            return json_decode($response->getBody()->getContents(), true);
         } else {
             return [
                 'Count' => 0,
