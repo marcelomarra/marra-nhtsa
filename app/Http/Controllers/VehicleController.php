@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\NHTSA\GetSafetyRankings;
-use App\Jobs\NHTSA\GetVehicleOverallRating;
+use App\Jobs\VehicleSafetyRankingSearcher;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class VehicleController extends Controller
 {
+    use DispatchesJobs;
+
     /*
      * Search for a vehicle
      *
-     * @param $model_year
-     * @param $manufacturer
-     * @param $model
+     * @param integer $model_year
+     * @param string $manufacturer
+     * @param string $model
      * @return \Illuminate\Http\JsonResponse
      */
     public function getSearch($model_year, $manufacturer, $model)
@@ -23,9 +25,9 @@ class VehicleController extends Controller
     /*
      * Search for a vehicle
      *
-     * @param $model_year
-     * @param $manufacturer
-     * @param $model
+     * @param integer $model_year
+     * @param string $manufacturer
+     * @param string $model
      * @return \Illuminate\Http\JsonResponse
      */
     public function postSearch()
@@ -34,32 +36,14 @@ class VehicleController extends Controller
     }
 
     /**
-     * @param $model_year
-     * @param $manufacturer
-     * @param $model
+     * @param integer $model_year
+     * @param string $manufacturer
+     * @param string $model
      * @return \Illuminate\Http\JsonResponse
      */
     protected function performSearch($model_year, $manufacturer, $model)
     {
-        $response = $this->dispatch(new GetSafetyRankings($model_year, $manufacturer, $model));
-        if (isset($response['Results'])) {
-            $collection = collect($response['Results']);
-            $show_ratings = request()->get('withRating');
-            $transformed = $collection->reduce(function ($lookup, $vehicle) use ($show_ratings) {
-                $transformedVehicle = [];
-                $transformedVehicle['Description'] = $vehicle['VehicleDescription'];
-                $transformedVehicle['VehicleId'] = $vehicle['VehicleId'];
-                if ($show_ratings === 'true') {
-                    $transformedVehicle['CrashRating'] = $this->dispatch(new GetVehicleOverallRating($vehicle['VehicleId']));
-                }
-                $lookup[] = $transformedVehicle;
-                return $lookup;
-            }, []);
-            $response['Results'] = $transformed;
-        } else {
-            unset($response['Message']);
-            $response['Results'] = [];
-        }
+        $response = $this->dispatch(new VehicleSafetyRankingSearcher($model_year, $manufacturer, $model));
         return response()->json($response, 200);
     }
 }
