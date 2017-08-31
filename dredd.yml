@@ -1,0 +1,36 @@
+dry-run: null
+hookfiles: null
+language: php
+sandbox: false
+server: 'php -S 0.0.0.0:8001 -t public/'
+server-wait: 3
+init: false
+custom:
+  apiaryApiKey: d42191ddb378a0ea26b795949f6fadd5
+  apiaryApiName: marranhtsa
+names: false
+only: []
+reporter: apiary
+output: []
+header: []
+sorted: false
+user: null
+inline-errors: false
+details: false
+method: []
+color: true
+level: info
+timestamp: false
+silent: false
+path: []
+hooks-worker-timeout: 5000
+hooks-worker-connect-timeout: 1500
+hooks-worker-connect-retry: 500
+hooks-worker-after-connect-wait: 100
+hooks-worker-term-timeout: 5000
+hooks-worker-term-retry: 500
+hooks-worker-handler-host: 127.0.0.1
+hooks-worker-handler-port: 61321
+config: ./dredd.yml
+blueprint: apiary.apib
+endpoint: 'http://0.0.0.0:8001/api'
