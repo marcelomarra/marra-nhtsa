@@ -2,14 +2,9 @@ language: php
 
 php:
   - 7.1
-node:
-  - 8.4.0
 git:
   submodules: false
 install:
     - composer install
-    - npm install -g dredd@1.0.1
-before_script:
-  - dredd
 script:
-    - composer test
+    - vendor/bin/phpunit
