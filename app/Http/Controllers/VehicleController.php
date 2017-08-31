@@ -12,20 +12,20 @@ class VehicleController extends Controller
     /*
      * Search for a vehicle
      *
-     * @param integer $model_year
+     * @param integer $modelYear
      * @param string $manufacturer
      * @param string $model
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getSearch($model_year, $manufacturer, $model)
+    public function getSearch($modelYear, $manufacturer, $model)
     {
-        return $this->performSearch($model_year, $manufacturer, $model);
+        return $this->performSearch($modelYear, $manufacturer, $model);
     }
 
     /*
      * Search for a vehicle
      *
-     * @param integer $model_year
+     * @param integer $modelYear
      * @param string $manufacturer
      * @param string $model
      * @return \Illuminate\Http\JsonResponse
@@ -36,14 +36,14 @@ class VehicleController extends Controller
     }
 
     /**
-     * @param integer $model_year
+     * @param integer $modelYear
      * @param string $manufacturer
      * @param string $model
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function performSearch($model_year, $manufacturer, $model)
+    protected function performSearch($modelYear, $manufacturer, $model)
     {
-        $response = $this->dispatch(new VehicleSafetyRankingSearcher($model_year, $manufacturer, $model));
+        $response = $this->dispatch(new VehicleSafetyRankingSearcher($modelYear, $manufacturer, $model));
         return response()->json($response, 200);
     }
 }

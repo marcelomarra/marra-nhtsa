@@ -8,3 +8,10 @@ install:
     - composer install
 script:
     - vendor/bin/phpunit
+deploy:
+  provider: heroku
+  api_key: a729423c-10e8-41eb-a613-c40b73cde121
+  app:
+    master: marra-nhtsa-staging
+    develop: marra-nhtsa-dev
+    tags/*: marra-nhtsa
