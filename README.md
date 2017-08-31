@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/marcelomarra/marra-nhtsa.svg?branch=master)](https://travis-ci.org/marcelomarra/marra-nhtsa)
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
-[![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
-[![Issue Count](https://codeclimate.com/github/codeclimate/codeclimate/badges/issue_count.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
+[![Code Climate](https://codeclimate.com/github/marcelomarra/marra-nhtsa/badges/gpa.svg)](https://codeclimate.com/github/marcelomarra/marra-nhtsa)
+[![Test Coverage](https://codeclimate.com/github/marcelomarra/marra-nhtsa/badges/coverage.svg)](https://codeclimate.com/github/marcelomarra/marra-nhtsa/coverage)
+[![Issue Count](https://codeclimate.com/github/marcelomarra/marra-nhtsa/badges/issue_count.svg)](https://codeclimate.com/github/marcelomarra/marra-nhtsa)
 
 # marra-ntsha
 
