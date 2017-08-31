@@ -1,7 +1,6 @@
 language: php
     - '7.1'
-install:
-    - composer install
-    - npm install -g dredd
+git:
+  submodules: false
 script:
-    - dredd
+    - composer test

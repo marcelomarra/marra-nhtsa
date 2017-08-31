@@ -48,6 +48,18 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+        ],
+        "post-install-cmd": [
+            "npm install -g dredd drafter blueman aglio"
+        ],
+        "update-docs" : [
+            "drafter -f json -t ast -o AST.json apiary.apib",
+            "blueman convert AST.json --output=postman.collections",
+            "aglio -i apiary.apib --theme-template triple  -o resources/views/docs/index.blade.php"
+        ],
+        "test": [
+            "vendor/bin/phpunit",
+            "dredd"
         ]
     },
     "config": {
