@@ -10,6 +10,7 @@ script:
     - vendor/bin/phpunit
 deploy:
   provider: heroku
+  buildpack: php
   api_key: a729423c-10e8-41eb-a613-c40b73cde121
   app:
     master: marra-nhtsa-staging
