@@ -7,7 +7,11 @@ git:
 env:
   - APP_KEY=base64:14UOEy35TDK/IEyhn1wWAQlvDGc5JZsAgWCnw1/c030=
   - NHTSA_API_URL=https://one.nhtsa.gov/webapi/api/SafetyRatings/
+pre_install:
+  - npm install -g dredd@1.0.1
 install:
     - composer install
+before_script:
+  - dredd
 script:
     - composer test
