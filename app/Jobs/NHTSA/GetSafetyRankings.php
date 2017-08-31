@@ -50,11 +50,10 @@ class GetSafetyRankings
         $response = $client->request('GET', $url);
         if ($response->getStatusCode() === 200) {
             return json_decode($response->getBody()->getContents(), true);
-        } else {
-            return [
-                'Count' => 0,
-                'Results' => []
-            ];
         }
+        return [
+            'Count' => 0,
+            'Results' => []
+        ];
     }
 }

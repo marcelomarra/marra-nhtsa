@@ -1,7 +1,18 @@
 language: php
-    - '7.1'
+
+php:
+  - 7.1
+git:
+  submodules: false
 install:
     - composer install
-    - npm install -g dredd
 script:
-    - dredd
+    - vendor/bin/phpunit
+deploy:
+  provider: heroku
+  buildpack: php
+  api_key: $HEROKU_TOKEN
+  app:
+    master: marra-nhtsa-staging
+    develop: marra-nhtsa-dev
+    tags/*: marra-nhtsa

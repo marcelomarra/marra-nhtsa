@@ -38,9 +38,7 @@ class GetVehicleOverallRating
             if (isset($rating['Results']) && count($rating['Results'])) {
                 return $rating['Results'][0]['OverallRating'];
             }
-            return 'Not Rated';
-        } else {
-            return 'Not Rated';
         }
+        return 'Not Rated';
     }
 }
