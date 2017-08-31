@@ -12,6 +12,8 @@
 - Run composer install
 - Run php artisan key:generate
 - To test if its alright, run vendor/bin/phpunit
+- To host just run php artisan serve
+- To use more simply, use the Postman collection (postman.collections)
 
 ## API Docs
 
