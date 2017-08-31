@@ -11,7 +11,7 @@ script:
 deploy:
   provider: heroku
   buildpack: php
-  api_key: a729423c-10e8-41eb-a613-c40b73cde121
+  api_key: $HEROKU_TOKEN
   app:
     master: marra-nhtsa-staging
     develop: marra-nhtsa-dev
