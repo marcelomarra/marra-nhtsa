@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\NHTSA\GetSafetyRankings;
+use App\Jobs\NHTSA\GetVehicleOverallRating;
 
 class VehicleController extends Controller
 {
@@ -43,10 +44,14 @@ class VehicleController extends Controller
         $response = $this->dispatch(new GetSafetyRankings($model_year, $manufacturer, $model));
         if (isset($response['Results'])) {
             $collection = collect($response['Results']);
-            $transformed = $collection->reduce(function ($lookup, $vehicle) {
+            $show_ratings = request()->get('withRating');
+            $transformed = $collection->reduce(function ($lookup, $vehicle) use ($show_ratings) {
                 $transformedVehicle = [];
                 $transformedVehicle['Description'] = $vehicle['VehicleDescription'];
                 $transformedVehicle['VehicleId'] = $vehicle['VehicleId'];
+                if ($show_ratings === 'true') {
+                    $transformedVehicle['CrashRating'] = $this->dispatch(new GetVehicleOverallRating($vehicle['VehicleId']));
+                }
                 $lookup[] = $transformedVehicle;
                 return $lookup;
             }, []);
